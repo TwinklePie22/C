@@ -6,39 +6,23 @@ struct node
     struct node *next;
 };
 struct node *head;
-void beginsert() // function definition
+void beginsert() 
 {
     struct node *ptr;
-    int item;
     ptr = (struct node *)malloc(sizeof(struct node *));
-    if (ptr == NULL)
-    {
-printf("\nOVERFLOW");
-    }
-    else
-    {
+    
 printf("\nEnter value\n");
-scanf("%d", &item);
-ptr->data = item;
+scanf("%d", &ptr->data);
 ptr->next = head;
 head = ptr;
 printf("\nNode inserted");
-    }
 }
-void lastinsert() // function definition
+void lastinsert() 
 {
     struct node *ptr, *temp;
-    int item;
-    ptr = (struct node *)malloc(sizeof(struct node));
-    if (ptr == NULL)
-    {
-printf("\nOVERFLOW");
-    }
-    else
-    {
+   ptr = (struct node *)malloc(sizeof(struct node));
 printf("\nEnter value?\n");
-scanf("%d", &item);
-ptr->data = item;
+scanf("%d", &ptr->data);
 if (head == NULL)
 {
     ptr->next = NULL;
@@ -56,40 +40,8 @@ else
     ptr->next = NULL;
     printf("\nNode inserted");
 }
-    }
 }
-void randominsert() // function definition
-{
-    int i, loc, item;
-    struct node *ptr, *temp;
-    ptr = (struct node *)malloc(sizeof(struct node));
-    if (ptr == NULL)
-    {
-printf("\nOVERFLOW");
-    }
-    else
-    {
-printf("\nEnter element value");
-scanf("%d", &item);
-ptr->data = item;
-printf("\nEnter the location after which you want to insert ");
-scanf("\n%d", &loc);
-temp = head;
-for (i = 0; i < loc; i++)
-{
-    temp = temp->next;
-    if (temp == NULL)
-    {
-        printf("\ncan't insert\n");
-        return;
-    }
-}
-ptr->next = temp->next;
-temp->next = ptr;
-printf("\nNode inserted");
-    }
-}
-void begin_delete() // function definition
+void begin_delete()
 {
     struct node *ptr;
     if (head == NULL)
@@ -130,28 +82,7 @@ free(ptr);
 printf("\nDeleted Node from the last ...\n");
     }
 }
-void random_delete() // function definition
-{
-    struct node *ptr, *ptr1;
-    int loc, i;
-    printf("\n Enter the location of the node after which you want to perform deletion \n");
-    scanf("%d", &loc);
-    ptr = head;
-    for (i = 0; i < loc; i++)
-    {
-ptr1 = ptr;
-ptr = ptr->next;
-if (ptr == NULL)
-{
-    printf("\nCan't delete");
-    return;
-}
-    }
-    ptr1->next = ptr->next;
-    free(ptr);
-    printf("\nDeleted node %d ", loc + 1);
-}
-void search() // function definition
+void search() 
 {
     struct node *ptr;
     int item, i = 0, flag;
@@ -206,12 +137,9 @@ while (ptr != NULL)
 void main() 
 {
     int choice = 0;
-    while (choice != 9)
+    while (choice != 7)
     {
-        printf("\n\n*********Main Menu*********\n");
-        printf("\nChoose one option from the following list ...\n");
-        printf("\n===============================================\n");
-printf("\n1.Insert in begining\n2.Insert at last\n3.Insert at any random location\n4.Delete from Beginning\n5.Delete from last\n6.Delete node after specified location\n7.Search for an element\n8.Show\n9.Exit\n");
+printf("\n1.Insert in begining\n2.Insert at last\n3.Delete from Beginning\n4.Delete from last\n5.Search for an element\n6.Display\n7.Exit\n");
 printf("\nEnter your choice?\n");
 scanf("\n%d",&choice);
 switch(choice)
@@ -223,24 +151,18 @@ switch(choice)
             lastinsert();
             break;
         case 3:
-            randominsert();
-            break;
-        case 4:
             begin_delete();
             break;
-        case 5:
+        case 4:
             last_delete();
             break;
-        case 6:
-            random_delete();
-            break;
-        case 7:
+        case 5:
             search();
             break;
-        case 8:
+        case 6:
             display();
             break;
-        case 9:
+        case 7:
             exit(0);
             break;
         default:

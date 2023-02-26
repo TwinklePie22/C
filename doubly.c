@@ -7,58 +7,7 @@ struct node
     int data;
 };
 struct node *head;
-void insertion_beginning(); // function prototype
-void insertion_last();
-void insertion_specified();
-void deletion_beginning();
-void deletion_last();
-void deletion_specified();
-void display();
-void search();
-void main() // main function
-{
-    int choice = 0;
-    while (choice != 9)
-    {
-        printf("Main Menu\n");
-        printf("1.Insert in begining\n2.Insert at last\n3.Insert at any random location\n4.Delete from Beginning\n 5.delete from last\n6.Delete the node after the given data\n7.Search\n8.Show\n9.Exit\n");
-        printf("\nEnter your choice?\n");
-        scanf("%d", &choice);
-        switch (choice)
-        {
-        case 1:
-            insertion_beginning();
-            break;
-        case 2:
-            insertion_last();
-            break;
-        case 3:
-            insertion_specified();
-            break;
-        case 4:
-            deletion_beginning();
-            break;
-        case 5:
-            deletion_last();
-            break;
-        case 6:
-            deletion_specified();
-            break;
-        case 7:
-            search();
-            break;
-        case 8:
-            display();
-            break;
-        case 9:
-            exit(0);
-            break;
-        default:
-            printf("Please enter valid choice..\n");
-        }
-    }
-}s
-void insertion_beginning() // function definition
+void insertion_beginning() 
 {
     struct node *ptr;
     int item;
@@ -89,7 +38,7 @@ void insertion_beginning() // function definition
         printf("Node inserted\n");
     }
 }
-void insertion_last() // function definition
+void insertion_last() 
 {
     struct node *ptr, *temp;
     int item;
@@ -123,7 +72,7 @@ void insertion_last() // function definition
     }
     printf("node inserted\n");
 }
-void insertion_specified() // function definition
+void insertion_specified() 
 {
     struct node *ptr, *temp;
     int item, loc, i;
@@ -156,7 +105,7 @@ void insertion_specified() // function definition
         printf("node inserted\n");
     }
 }
-void deletion_beginning() // function definition
+void deletion_beginning() 
 {
     struct node *ptr;
     if (head == NULL)
@@ -178,7 +127,7 @@ void deletion_beginning() // function definition
         printf("node deleted\n");
     }
 }
-void deletion_last() // function definition
+void deletion_last() 
 {
     struct node *ptr;
     if (head == NULL)
@@ -203,7 +152,7 @@ void deletion_last() // function definition
         printf("node deleted\n");
     }
 }
-void deletion_specified() // function definition
+void deletion_specified() 
 {
     struct node *ptr, *temp;
     int val;
@@ -229,7 +178,7 @@ void deletion_specified() // function definition
         printf("node deleted\n");
     }
 }
-void display() // display definition
+void display()
 {
     struct node *ptr;
     printf(" printing values...\n");
@@ -240,7 +189,7 @@ void display() // display definition
         ptr = ptr->next;
     }
 }
-void search() // search definition
+void search() 
 {
     struct node *ptr;
     int item, i = 0, flag;
@@ -271,6 +220,49 @@ void search() // search definition
         if (flag == 1)
         {
             printf("Item not found\n");
+        }
+    }
+}
+void main() 
+{
+    int choice = 0;
+    while (choice != 9)
+    {
+        printf("Main Menu\n");
+        printf("1.Insert in begining\n2.Insert at last\n3.Insert at any random location\n4.Delete from Beginning\n5.delete from last\n6.Delete the node after the given data\n7.Search\n8.Show\n9.Exit\n");
+        printf("\nEnter your choice?\n");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            insertion_beginning();
+            break;
+        case 2:
+            insertion_last();
+            break;
+        case 3:
+            insertion_specified();
+            break;
+        case 4:
+            deletion_beginning();
+            break;
+        case 5:
+            deletion_last();
+            break;
+        case 6:
+            deletion_specified();
+            break;
+        case 7:
+            search();
+            break;
+        case 8:
+            display();
+            break;
+        case 9:
+            exit(0);
+            break;
+        default:
+            printf("Please enter valid choice..\n");
         }
     }
 }

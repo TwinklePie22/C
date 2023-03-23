@@ -3,11 +3,11 @@ int fact(int); // function definition
 
 int main()
 {
-    int n, f;
+    int n;
     printf("enter number\n"); // Ask user for the input and store it in n
     scanf("%d", &n);
-    f = fact(n);                  // function call
-    printf("factorial is %d", f); // displaying factorial of number
+    fact(n);                  // function call
+    printf("factorial is %d", fact(n)); // displaying factorial of number
 }
 
 int fact(int n) // function declaration
@@ -17,7 +17,5 @@ int fact(int n) // function declaration
     else if (n == 1)
         return 1;
     else
-    {
         return n*fact(n - 1); // function calling itself(Recursion)
-    }
 }

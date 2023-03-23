@@ -55,14 +55,8 @@ void display(struct node *ptr)
 void peek(struct node *ptr)
 {
     if (ptr->data == 0)
-    {
         ptr = ptr->next;
-        printf("%d\n", ptr->data);
-    }
-    else
-    {
-        printf("%d\n", ptr->data);
-    }
+    printf("%d\n", ptr->data);
 }
 
 int main()

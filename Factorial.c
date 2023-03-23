@@ -12,14 +12,12 @@ int main()
 
 int fact(int n) // function declaration
 {
-    int result;
     if (n == 0)
         return 0;
     else if (n == 1)
         return 1;
     else
     {
-        result = n * fact(n - 1); // function calling itself(Recursion)
-        return result;
+        return n*fact(n - 1); // function calling itself(Recursion)
     }
 }

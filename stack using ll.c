@@ -5,50 +5,70 @@ struct node
     int data;
     struct node *next;
 };
-struct node *top=0;
-void push(int ele)
+struct node *push(struct node *ptr, int ele)
 {
     struct node *n;
     n = (struct node *)malloc(sizeof(struct node));
     n->data = ele;
-    n->next = n;
-    top=n;
+    n->next = ptr->next;
+    ptr->next = n;
+    return ptr;
 }
-void pop()
+struct node *pop(struct node *ptr)
 {
-    struct node *temp;
-    temp=top;
-    if (top == NULL)
+    if (ptr == NULL)
+    {
         printf("underflow\n");
-    else
-        top = top->next;
-        printf("elelment deleted is %d\n", top->data);
-        free(temp);
-}
-void display()
-{
-    struct node *temp;
-    temp=top;
-    if (top == 0)
-        printf("stack is empty\n");
+    }
     else
     {
-        while(temp!=0)
+        if (ptr->data == 0)
         {
-            printf("%d\n", temp->data);
-            temp = temp->next;
+            ptr = ptr->next;
+        }
+            struct node *q;
+            q = ptr;
+            ptr = ptr->next;
+            // struct node *  x;
+            // x->data=q->data;
+            printf("%d\n", q->data);
+            free(q);
+            return ptr;
+    }
+}
+void display(struct node *ptr)
+{
+    while (ptr != NULL)
+    {
+        if (ptr->data == 0)
+        {
+            ptr = ptr->next;
+            printf("%d\n", ptr->data);
+        }
+        else
+        {
+            printf("%d\n", ptr->data);
+            ptr = ptr->next;
         }
     }
 }
-void peek()
+void peek(struct node *ptr)
 {
-    if (top == 0)
-        printf("stack is empty\n");
-    printf("top element is %d\n", top->data);
+    if (ptr->data == 0)
+    {
+        ptr = ptr->next;
+        printf("%d\n", ptr->data);
+    }
+    else
+    {
+        printf("%d\n", ptr->data);
+    }
 }
 
 int main()
 {
+    struct node *top;
+    top = (struct node *)malloc(sizeof(struct node));
     int value, ch;
     while (1)
     {
@@ -59,21 +79,22 @@ int main()
         case 1:
             printf("enter the value \n");
             scanf("%d", &value);
-            push(value);
+            top = push(top, value);
             break;
         case 2:
-            pop();
+            top = pop(top);
             break;
         case 3:
-            peek();
+            peek(top);
             break;
         case 4:
-            display();
+            display(top);
             break;
         case 5:
-            exit(0);
+            exit(1);
             break;
-        default: printf("enter valid choice\n");
+        case 6:
+            printf("%d\t%d\n", top->data, top->next);
         }
     }
 }

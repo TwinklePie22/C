@@ -5,15 +5,16 @@ struct node
     int data;
     struct node *next;
 };
-void push(struct node *ptr, int ele)
+struct node *push(struct node *ptr, int ele)
 {
     struct node *n;
     n = (struct node *)malloc(sizeof(struct node));
     n->data = ele;
     n->next = ptr->next;
     ptr->next = n;
+    return ptr;
 }
-void pop(struct node *ptr)
+struct node *pop(struct node *ptr)
 {
     if (ptr == NULL)
     {
@@ -32,16 +33,23 @@ void pop(struct node *ptr)
             // x->data=q->data;
             printf("%d\n", q->data);
             free(q);
-  }
+            return ptr;
+    }
 }
 void display(struct node *ptr)
 {
     while (ptr != NULL)
     {
         if (ptr->data == 0)
+        {
             ptr = ptr->next;
-        printf("%d\n", ptr->data);
-        ptr = ptr->next;
+            printf("%d\n", ptr->data);
+        }
+        else
+        {
+            printf("%d\n", ptr->data);
+            ptr = ptr->next;
+        }
     }
 }
 void peek(struct node *ptr)
@@ -71,10 +79,10 @@ int main()
         case 1:
             printf("enter the value \n");
             scanf("%d", &value);
-            push(top, value);
+            top = push(top, value);
             break;
         case 2:
-            pop(top);
+            top = pop(top);
             break;
         case 3:
             peek(top);
@@ -85,7 +93,8 @@ int main()
         case 5:
             exit(1);
             break;
-            default:printf("enter valid choice\n");
+        case 6:
+            printf("%d\t%d\n", top->data, top->next);
         }
     }
 }

@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define maxsize 5
+#define n 5
 void insert();  // insert function prototype
 void delete();  // delete function prototype
 void display(); // display function prototype
 int front = -1, rear = -1;
-int queue[maxsize];
+int queue[n];
 void main() // main function
 {
     int choice;
@@ -39,7 +39,7 @@ void insert() // insert function declaration
     int item;
     printf("Enter the element\n");
     scanf("%d", &item);
-    if (rear == maxsize - 1)
+    if (rear == n - 1)
     {
         printf("OVERFLOW\n");
         return;
@@ -51,7 +51,7 @@ void insert() // insert function declaration
     }
     else
     {
-        rear = rear + 1;
+        rear = (rear + 1)%n;
     }
     queue[rear] = item;
     printf("Value inserted\n");
@@ -74,7 +74,7 @@ void delete() // delete function declaration
         }
         else
         {
-            front = front + 1;
+            front = (front + 1)%n;
         }
         printf("value deleted\n");
     }

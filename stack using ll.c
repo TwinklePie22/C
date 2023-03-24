@@ -5,7 +5,7 @@ struct node
     int data;
     struct node *next;
 };
-struct node *push(struct node *ptr, int ele)
+void push(struct node *ptr, int ele)
 {
     struct node *n;
     n = (struct node *)malloc(sizeof(struct node));
@@ -14,7 +14,7 @@ struct node *push(struct node *ptr, int ele)
     ptr->next = n;
     return ptr;
 }
-struct node *pop(struct node *ptr)
+void pop(struct node *ptr)
 {
     if (ptr == NULL)
     {
@@ -41,15 +41,9 @@ void display(struct node *ptr)
     while (ptr != NULL)
     {
         if (ptr->data == 0)
-        {
             ptr = ptr->next;
-            printf("%d\n", ptr->data);
-        }
-        else
-        {
-            printf("%d\n", ptr->data);
-            ptr = ptr->next;
-        }
+        printf("%d\n", ptr->data);
+        ptr = ptr->next;
     }
 }
 void peek(struct node *ptr)

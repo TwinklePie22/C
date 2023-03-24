@@ -12,7 +12,6 @@ void push(struct node *ptr, int ele)
     n->data = ele;
     n->next = ptr->next;
     ptr->next = n;
-    return ptr;
 }
 void pop(struct node *ptr)
 {
@@ -33,8 +32,7 @@ void pop(struct node *ptr)
             // x->data=q->data;
             printf("%d\n", q->data);
             free(q);
-            return ptr;
-    }
+  }
 }
 void display(struct node *ptr)
 {

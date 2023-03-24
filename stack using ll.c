@@ -85,8 +85,7 @@ int main()
         case 5:
             exit(1);
             break;
-        case 6:
-            printf("%d\t%d\n", top->data, top->next);
+            default:printf("enter valid choice\n");
         }
     }
 }

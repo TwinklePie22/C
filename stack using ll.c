@@ -71,10 +71,10 @@ int main()
         case 1:
             printf("enter the value \n");
             scanf("%d", &value);
-            top = push(top, value);
+            push(top, value);
             break;
         case 2:
-            top = pop(top);
+            pop(top);
             break;
         case 3:
             peek(top);
